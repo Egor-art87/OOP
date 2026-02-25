@@ -1,11 +1,19 @@
+from validation_student import (
+    validate_name,
+    validate_age,
+    validate_gpa,
+    validate_course
+)
+
+
 class Student:
     university_name = 'НИТУ МИСиС'
     
     def __init__(self, name: str, age: int, gpa: float, course: int):
-        self._validate_name(name)
-        self._validate_age(age)
-        self._validate_gpa(gpa)
-        self._validate_course(course)
+        validate_name(name)
+        validate_age(age)
+        validate_gpa(gpa)
+        validate_course(course)
 
         self._name = name
         self._age = age
@@ -13,31 +21,6 @@ class Student:
         self._course = course
         self._is_active = True
 
-        # validstion metods
-
-    def _validate_name(self, name):
-        if not isinstance(name, str):
-            raise TypeError('Name must be tupe string')
-        if not name.strip():
-            raise ValueError("Name cannot be empty")
-        
-    def _validate_age(self, age):
-        if not isinstance(age, int):
-            raise TypeError('Age must be tupe integer')
-        if age < 16:
-            raise ValueError('Studen must be at least 16 years')
-        
-    def _validate_gpa(self, gpa):
-        if not isinstance(gpa, (int, float)):
-            raise TypeError('Gpa must be tupe ineger or float')
-        if not 0 <= gpa <= 5:
-            raise ValueError('Gpa must be range from 0 to 5')
-        
-    def _validate_course(self, course):
-        if not isinstance(course, int):
-            raise TypeError('Course must be tupe integer')
-        if not 1 <= course <= 6:
-            raise ValueError('Course must be range form 1 to 6')
         
     @property
     def name(self):
