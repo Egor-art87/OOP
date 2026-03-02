@@ -32,7 +32,7 @@ class Student:
 
     @gpa.setter
     def gpa(self, value):
-        self._validate_gpa(value)
+        validate_gpa(value)
         if not self._is_active:
             raise ValueError("Cannot change GPA of inactive student")
         self._gpa = value
@@ -56,8 +56,16 @@ class Student:
 
         self._course += 1
 
+    def age_up(self):
+        if not self._is_active:
+            raise ValueError("Inactive student cannot be promoted")
+        self._age += 1
+
     def expel(self):
         self._is_active = False
+
+    def active(self):
+        self._is_active = True
 
         # megic method 
 

@@ -1,18 +1,18 @@
 from model import Student
 
 # Сценарий 1
-s1 = Student("Ivan Petrov", 19, 4.5, 2)
+s1 = Student("Egor", 18, 4.5, 2)
 print(s1)
 
 # Сценарий 2 — сравнение
-s2 = Student("Ivan Petrov", 19, 3.8, 2)
+s2 = Student("Egor", 18, 3.8, 2)
 print("Equal:", s1 == s2)
 
 # Сценарий 3 — изменение GPA
 s1.gpa = 4.8
 print("Updated GPA:", s1.gpa)
 
-# Сценарий 4 — состояние
+# Сценарий 4 — состояние (не активен)
 s1.expel()
 
 try:
