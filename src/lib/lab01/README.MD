@@ -1,184 +1,66 @@
-# lab 01
-## Класс и инкапсуляция 
+# lab01
+## Описание проекта
 
+### Проект представляет собой реализацию класса Student на языке Python, который моделирует студента университета. Класс хранит информацию об имени, возрасте, среднем балле (GPA), курсе и статусе активности, а также предоставляет методы для изменения этих данных с валидацией. Для чистоты кода функции валидации вынесены в отдельный модуль validation_student.py. В файле demo.py приведены примеры использования класса и демонстрация его основных возможностей.
 
-### Файл с основной логикой model.py
+## Мыслительный процесс создания класса 
 
-### Содержит основной класс Student, реализующий доменную модель студента. В классе инкапсулированы атрибуты (_name, _age, _gpa, _course, _is_active), реализована валидация входных данных через внешний модуль, добавлены свойства (@property) для контролируемого доступа к полям, а также бизнес-методы (promote, expel, activate, age_up). Поведение объекта зависит от логического состояния студента (активен / неактивен). Также переопределены магические методы __str__, __repr__ и __eq__.
+```txt
+Мыслительный процесс создания класса
 
-```python
-from validation_student import (
-    validate_name,
-    validate_age,
-    validate_gpa,
-    validate_course
-)
+При разработке класса Student я руководствовался следующими соображениями:
 
+    Определение сущности «студент»
 
-class Student:
-    university_name = 'НИТУ МИСиС'
-    
-    def __init__(self, name: str, age: int, gpa: float, course: int):
-        validate_name(name)
-        validate_age(age)
-        validate_gpa(gpa)
-        validate_course(course)
+    Необходимо было выделить ключевые характеристики студента университета:
 
-        self._name = name
-        self._age = age
-        self._gpa = gpa
-        self._course = course
-        self._is_active = True
+     -   Имя (name) – строка, не может быть пустой.
 
-        
-    @property
-    def name(self):
-        return self._name
+     -   Возраст (age) – целое число, не менее 16 лет (минимальный возраст для поступления в вуз).
 
-    @property
-    def gpa(self):
-        return self._gpa
+     -   Средний балл (gpa) – число с плавающей точкой (или целое) в диапазоне от 0 до 5 (принятая шкала оценок).
 
-    @gpa.setter
-    def gpa(self, value):
-        validate_gpa(value)
-        if not self._is_active:
-            raise ValueError("Cannot change GPA of inactive student")
-        self._gpa = value
+     -   Курс (course) – целое число от 1 до 6 (стандартный срок обучения).
 
-    @property
-    def course(self):
-        return self._course
+     -   Статус активности (is_active) – булево значение, показывающее, учится ли студент в данный момент.
 
-    @property
-    def is_active(self):
-        return self._is_active
-    
-    # bisiness method
+    Инкапсуляция и контроль доступа
+    Чтобы предотвратить прямое изменение атрибутов извне и обеспечить проверку данных, все поля были сделаны "приватными" (с префиксом _). Доступ к ним организован через свойства (property), что позволяет выполнять валидацию при присваивании (например, при изменении GPA).
 
-    def promote(self):
-        if not self._is_active:
-            raise ValueError("Inactive student cannot be promoted")
+    Валидация данных
+    Для соблюдения принципа единственной ответственности функции проверки корректности значений были вынесены в отдельный модуль validation_student.py. Это упрощает их повторное использование и тестирование. Каждая функция отвечает за один атрибут и генерирует исключения TypeError или ValueError при нарушении условий.
 
-        if self._course >= 6:
-            raise ValueError("Maximum course reached")
+    Бизнес-логика
+    Предусмотрены методы, отражающие типичные действия со студентом:
 
-        self._course += 1
+     -   promote() – перевод на следующий курс (только для активного студента, не выше 6-го).
 
-    def age_up(self):
-        if not self._is_active:
-            raise ValueError("Inactive student cannot be promoted")
-        self._age += 1
+     -   age_up() – увеличение возраста (например, после дня рождения).
 
-    def expel(self):
-        self._is_active = False
+     -   expel() – отчисление (статус становится неактивным).
 
-    def active(self):
-        self._is_active = True
+     -   active() – восстановление (статус становится активным).
+        Эти методы также проверяют статус активности, чтобы избежать некорректных операций с отчисленными студентами.
 
-        # megic method 
+    Атрибут класса
+    Поскольку все студенты учатся в одном университете, название вуза было вынесено в атрибут класса university_name. Это экономит память и подчёркивает общность всех экземпляров.
 
-    def __str__(self):
-        status = "Active" if self._is_active else "Inactive"
-        return (
-            f"Student: {self._name}\n"
-            f"Age: {self._age}\n"
-            f"GPA: {self._gpa:.2f}\n"
-            f"Course: {self._course}\n"
-            f"Status: {status}"
-        )
+    Магические методы
+    Для удобства отладки и вывода информации реализованы:
 
-    def __repr__(self):
-        return (
-            f"Student(name={self._name!r}, "
-            f"age={self._age}, "
-            f"gpa={self._gpa}, "
-            f"course={self._course})"
-        )
+     -   __str__ – возвращает читаемое представление студента (используется в print).
 
-    def __eq__(self, other):
-        if not isinstance(other, Student):
-            return False
-        return (
-            self._name == other._name and
-            self._age == other._age
-        )
+     -   __repr__ – официальное строковое представление, полезное при разработке.
+
+     -   __eq__ – сравнивает студентов по имени и возрасту (логично считать, что если имя и возраст совпадают, то это один и тот же студент).
+
+    Обработка исключений
+    В демонстрационном скрипте demo.py намеренно показаны ситуации, когда валидация или бизнес-логика приводят к исключениям. Это демонстрирует надёжность класса и понятность сообщений об ошибках.
 ```
+## Ниже представлен результат работы программы
 
-### файл с валидацией validation_student.py
-
-### Содержит функции валидации данных: validate_name, validate_age, validate_gpa, validate_course. Отвечает исключительно за проверку корректности типов и допустимых диапазонов значений. Логика проверки вынесена в отдельный модуль для соблюдения принципа единственной ответственности и исключения дублирования кода.
-
-```python 
-
-#------------------
-#   Validation
-#------------------
-
-def validate_name(name):
-        if not isinstance(name, str):
-            raise TypeError('Name must be tupe string')
-        if not name.strip():
-            raise ValueError("Name cannot be empty")
-        
-
-def validate_age(age):
-    if not isinstance(age, int):
-        raise TypeError('Age must be tupe integer')
-    if age < 16:
-        raise ValueError('Studen must be at least 16 years')
-        
-
-def validate_gpa(gpa):
-    if not isinstance(gpa, (int, float)):
-        raise TypeError('Gpa must be tupe ineger or float')
-    if not 0 <= gpa <= 5:
-        raise ValueError('Gpa must be range from 0 to 5')
-        
-        
-def validate_course(course):
-    if not isinstance(course, int):
-        raise TypeError('Course must be tupe integer')
-    if not 1 <= course <= 6:
-        raise ValueError('Course must be range form 1 to 6')
-```
-
-### Демонстрационный файл demo.py
-
-### Содержит демонстрацию работы программы. В файле показаны основные сценарии использования класса Student: создание объектов, сравнение, изменение GPA, изменение логического состояния (исключение и восстановление), обработка ошибок валидации и демонстрация атрибута класса. Файл используется для проверки корректности работы всей системы.
-
-```python
-from model import Student
-
-# Сценарий 1
-s1 = Student("Egor", 18, 4.5, 2)
-print(s1)
-
-# Сценарий 2 — сравнение
-s2 = Student("Egor", 18, 3.8, 2)
-print("Equal:", s1 == s2)
-
-# Сценарий 3 — изменение GPA
-s1.gpa = 4.8
-print("Updated GPA:", s1.gpa)
-
-# Сценарий 4 — состояние (не активен)
-s1.expel()
-
-try:
-    s1.promote()
-except ValueError as e:
-    print("Error:", e)
-
-# Сценарий 5 — ошибка валидации
-try:
-    Student("", 10, 10, 20)
-except Exception as e:
-    print("Validation error:", e)
-
-# Атрибут класса
-print(Student.university_name)
-print(s1.university_name)
-```
-## Итог демонстрации 
 ![demo](/imeges/lab01/demo.png)
+
+# Заключение
+
+### Данный проект демонстрирует основные принципы объектно-ориентированного программирования на Python: инкапсуляцию, свойства, методы класса, магические методы и обработку исключений. 
