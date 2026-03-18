@@ -58,7 +58,7 @@ class Student:
 
     def age_up(self):
         if not self._is_active:
-            raise ValueError("Inactive student cannot be promoted")
+            raise ValueError("Student is not active")
         self._age += 1
 
     def expel(self):
