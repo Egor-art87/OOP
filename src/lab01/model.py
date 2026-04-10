@@ -2,13 +2,13 @@ from validation_student import (
     validate_name,
     validate_age,
     validate_gpa,
-    validate_course
+    validate_course,
 )
 
 
 class Student:
-    university_name = 'НИТУ МИСиС'
-    
+    university_name = "НИТУ МИСиС"
+
     def __init__(self, name: str, age: int, gpa: float, course: int):
         validate_name(name)
         validate_age(age)
@@ -21,7 +21,6 @@ class Student:
         self._course = course
         self._is_active = True
 
-        
     @property
     def name(self):
         return self._name
@@ -44,7 +43,7 @@ class Student:
     @property
     def is_active(self):
         return self._is_active
-    
+
     # bisiness method
 
     def promote(self):
@@ -67,7 +66,7 @@ class Student:
     def active(self):
         self._is_active = True
 
-        # megic method 
+        # megic method
 
     def __str__(self):
         status = "Active" if self._is_active else "Inactive"
@@ -90,14 +89,4 @@ class Student:
     def __eq__(self, other):
         if not isinstance(other, Student):
             return False
-        return (
-            self._name == other._name and
-            self._age == other._age
-        )
-           
-
-
-
-
-
-        
+        return self._name == other._name and self._age == other._age
