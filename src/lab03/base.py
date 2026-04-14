@@ -1,8 +1,6 @@
-# src/lab03/base.py
 import sys
 from pathlib import Path
 
-# Добавляем корень проекта в sys.path
 project_root = Path(__file__).parent.parent.parent
 if str(project_root) not in sys.path:
     sys.path.insert(0, str(project_root))
@@ -119,7 +117,6 @@ class Student:
             return False
         return self._student_id == other._student_id
 
-    # Полиморфные методы (для ЛР-3)
     def calculate_scholarship(self) -> float:
         if not self._is_active:
             return 0.0

@@ -1,8 +1,6 @@
-# src/lab03/models.py
 import sys
 from pathlib import Path
 
-# Добавляем корень проекта в sys.path
 project_root = Path(__file__).parent.parent.parent
 if str(project_root) not in sys.path:
     sys.path.insert(0, str(project_root))
@@ -10,8 +8,8 @@ if str(project_root) not in sys.path:
 from src.lab03.base import Student
 from src.lib.collection import StudentCollection
 
+
 class BakalavrStudent(Student):
-    """Студент бакалавриата (1-4 курс)"""
 
     def __init__(self, student_id: int, name: str, age: int, gpa: float, course: int,
                  specialization: str, has_practice: bool = False):
