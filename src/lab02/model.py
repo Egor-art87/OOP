@@ -62,7 +62,6 @@ class Student:
     def is_active(self):
         return self._is_active
 
-    # bisiness method
 
     def promote(self):
         if not self._is_active:
