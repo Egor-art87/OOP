@@ -1,7 +1,3 @@
-"""
-Реализация интерфейсов для лабораторной работы №4.
-Все классы расширяют базовые из ЛР-3 поддержкой Printable и Comparable.
-"""
 import sys
 from pathlib import Path
 
