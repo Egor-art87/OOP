@@ -5,7 +5,7 @@ project_root = Path(__file__).parent.parent.parent
 if str(project_root) not in sys.path:
     sys.path.insert(0, str(project_root))
 
-# Импортируем базовый класс под другим именем
+
 from src.lab03.base import Student as BaseStudent
 from src.lab03.models import BakalavrStudent as _BakalavrStudent
 from src.lab03.models import MagaStudent as _MagaStudent
@@ -19,7 +19,6 @@ class Student(BaseStudent, Printable, Comparable):
         return str(self)
 
     def compare_to(self, other) -> int:
-        # Теперь проверяем по общему базовому классу
         if not isinstance(other, BaseStudent):
             raise TypeError("Сравнение только с объектами Student")
         if self.gpa < other.gpa:
@@ -63,7 +62,6 @@ class MagaStudent(_MagaStudent, Printable, Comparable):
                 return -1 if self.gpa < other.gpa else 1
             return 0
         else:
-            # С другими типами студентов сравниваем по курсу, затем по GPA
             if self.course != other.course:
                 return -1 if self.course < other.course else 1
             if self.gpa != other.gpa:
