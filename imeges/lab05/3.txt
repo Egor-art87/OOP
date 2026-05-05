@@ -1,0 +1,53 @@
+Сценарий 3: Callable-объекты
+GPA до применения GpaBooster:
+  Alice: 4.8
+  Bob: 3.9
+  Charlie: 3.2
+  Diana: 4.9
+  Eve: 4.5
+
+GPA после col3.apply(GpaBooster(0.2)):
+  Alice: 5.0
+  Bob: 4.1
+  Charlie: 3.4000000000000004
+  Diana: 5.0
+  Eve: 4.7
+
+Результат map(StudentFormatter):
+   Студент Alice, балл 5.0, курс 3 (Active)
+   Студент Bob, балл 4.1, курс 1 (Active)
+   Студент Charlie, балл 3.4000000000000004, курс 3 (Active)
+   Студент Diana, балл 5.0, курс 2 (Active)
+   Студент Eve, балл 4.7, курс 2 (Active)
+
+Фабрика функций: фильтр по минимальному GPA = 4.0
+
+--- Студенты с GPA >= 4.0 (после буста) ---
+1. Student: Alice
+Age: 20
+GPA: 5.00
+Course: 3
+Status: Active
+Specialization: Computer Science
+Practice: Пройдена
+2. Student: Bob
+Age: 22
+GPA: 4.10
+Course: 1
+Status: Active
+Supervisor: Dr. Smith
+Thesis topic: Artificial Intelligence
+3. Student: Diana
+Age: 23
+GPA: 5.00
+Course: 2
+Status: Active
+Supervisor: Dr. Brown
+Thesis topic: Robotics
+4. Student: Eve
+Age: 19
+GPA: 4.70
+Course: 2
+Status: Active
+Specialization: Physics
+Practice: Пройдена
