@@ -1,11 +1,5 @@
-"""
-Модуль container.py
-Содержит протоколы Displayable, Scorable и типизированную коллекцию TypedCollection.
-"""
-
 from typing import TypeVar, Generic, Callable, Optional, Any
 
-# ---------------------- Протоколы ----------------------
 from typing import Protocol
 
 class Displayable(Protocol):
@@ -18,20 +12,17 @@ class Scorable(Protocol):
     def score(self) -> float:
         ...
 
-# ---------------------- TypeVar для Generic ----------------------
 T = TypeVar('T')
 R = TypeVar('R')
 D = TypeVar('D', bound=Displayable)
 S = TypeVar('S', bound=Scorable)
 
-# ---------------------- Типизированная коллекция ----------------------
 class TypedCollection(Generic[T]):
     """Generic-коллекция, повторяющая интерфейс StudentCollection из ЛР-2."""
 
     def __init__(self) -> None:
         self._items: list[T] = []
 
-    # ---------- Методы из ЛР-2 ----------
     def add(self, item: T) -> None:
         """Добавляет элемент в коллекцию."""
         if item in self._items:
@@ -102,7 +93,6 @@ class TypedCollection(Generic[T]):
                 new_col.add(item)
         return new_col
 
-    # ---------- Новые методы для ЛР-6 ----------
     def find(self, predicate: Callable[[T], bool]) -> Optional[T]:
         """Возвращает первый элемент, удовлетворяющий предикату, или None."""
         for item in self._items:
