@@ -1,0 +1,68 @@
+Сценарий 1: цепочка filter → sort → apply
+
+--- Исходная коллекция ---
+1. Student: Alice
+Age: 20
+GPA: 4.80
+Course: 2
+Status: Active
+Specialization: Computer Science
+Practice: Пройдена
+2. Student: Bob
+Age: 22
+GPA: 3.90
+Course: 1
+Status: Active
+Supervisor: Dr. Smith
+Thesis topic: Artificial Intelligence
+3. Student: Charlie
+Age: 21
+GPA: 3.20
+Course: 3
+Status: Active
+Specialization: Mathematics
+Practice: Не пройдена
+4. Student: Diana
+Age: 23
+GPA: 4.90
+Course: 2
+Status: Active
+Supervisor: Dr. Brown
+Thesis topic: Robotics
+5. Student: Eve
+Age: 19
+GPA: 4.50
+Course: 1
+Status: Active
+Specialization: Physics
+Practice: Пройдена
+
+--- После filter(is_excellent) → sort(by_name) → apply(promote_student) ---
+1. Student: Alice
+Age: 20
+GPA: 4.80
+Course: 3
+Status: Active
+Specialization: Computer Science
+Practice: Пройдена
+2. Student: Diana
+Age: 23
+GPA: 4.90
+Course: 2
+Status: Active
+Supervisor: Dr. Brown
+Thesis topic: Robotics
+3. Student: Eve
+Age: 19
+GPA: 4.50
+Course: 2
+Status: Active
+Specialization: Physics
+Practice: Пройдена
+
+Исходная коллекция (без изменений структуры):
+Alice 4.8 course: 3
+Bob 3.9 course: 1
+Charlie 3.2 course: 3
+Diana 4.9 course: 2
+Eve 4.5 course: 2

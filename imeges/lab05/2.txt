@@ -1,0 +1,160 @@
+Сценарий 2: замена стратегий сортировки
+Сортировка по имени:
+
+--- Результат сортировки by_name ---
+1. Student: Alice
+Age: 20
+GPA: 4.80
+Course: 3
+Status: Active
+Specialization: Computer Science
+Practice: Пройдена
+2. Student: Bob
+Age: 22
+GPA: 3.90
+Course: 1
+Status: Active
+Supervisor: Dr. Smith
+Thesis topic: Artificial Intelligence
+3. Student: Charlie
+Age: 21
+GPA: 3.20
+Course: 3
+Status: Active
+Specialization: Mathematics
+Practice: Не пройдена
+4. Student: Diana
+Age: 23
+GPA: 4.90
+Course: 2
+Status: Active
+Supervisor: Dr. Brown
+Thesis topic: Robotics
+5. Student: Eve
+Age: 19
+GPA: 4.50
+Course: 2
+Status: Active
+Specialization: Physics
+Practice: Пройдена
+
+Сортировка по убыванию GPA (шкала 0-5):
+
+--- Результат сортировки by_gpa_desc ---
+1. Student: Diana
+Age: 23
+GPA: 4.90
+Course: 2
+Status: Active
+Supervisor: Dr. Brown
+Thesis topic: Robotics
+2. Student: Alice
+Age: 20
+GPA: 4.80
+Course: 3
+Status: Active
+Specialization: Computer Science
+Practice: Пройдена
+3. Student: Eve
+Age: 19
+GPA: 4.50
+Course: 2
+Status: Active
+Specialization: Physics
+Practice: Пройдена
+4. Student: Bob
+Age: 22
+GPA: 3.90
+Course: 1
+Status: Active
+Supervisor: Dr. Smith
+Thesis topic: Artificial Intelligence
+5. Student: Charlie
+Age: 21
+GPA: 3.20
+Course: 3
+Status: Active
+Specialization: Mathematics
+Practice: Не пройдена
+
+Сортировка по курсу и имени:
+
+--- Результат сортировки by_course_and_name ---
+1. Student: Bob
+Age: 22
+GPA: 3.90
+Course: 1
+Status: Active
+Supervisor: Dr. Smith
+Thesis topic: Artificial Intelligence
+2. Student: Diana
+Age: 23
+GPA: 4.90
+Course: 2
+Status: Active
+Supervisor: Dr. Brown
+Thesis topic: Robotics
+3. Student: Eve
+Age: 19
+GPA: 4.50
+Course: 2
+Status: Active
+Specialization: Physics
+Practice: Пройдена
+4. Student: Alice
+Age: 20
+GPA: 4.80
+Course: 3
+Status: Active
+Specialization: Computer Science
+Practice: Пройдена
+5. Student: Charlie
+Age: 21
+GPA: 3.20
+Course: 3
+Status: Active
+Specialization: Mathematics
+Practice: Не пройдена
+
+Фильтр: только магистранты:
+
+--- Только магистранты ---
+1. Student: Bob
+Age: 22
+GPA: 3.90
+Course: 1
+Status: Active
+Supervisor: Dr. Smith
+Thesis topic: Artificial Intelligence
+2. Student: Diana
+Age: 23
+GPA: 4.90
+Course: 2
+Status: Active
+Supervisor: Dr. Brown
+Thesis topic: Robotics
+
+Тот же метод filter_by, но с lambda – только студенты с GPA > 4.0:
+
+--- GPA > 4.0 ---
+1. Student: Diana
+Age: 23
+GPA: 4.90
+Course: 2
+Status: Active
+Supervisor: Dr. Brown
+Thesis topic: Robotics
+2. Student: Eve
+Age: 19
+GPA: 4.50
+Course: 2
+Status: Active
+Specialization: Physics
+Practice: Пройдена
+3. Student: Alice
+Age: 20
+GPA: 4.80
+Course: 3
+Status: Active
+Specialization: Computer Science
+Practice: Пройдена

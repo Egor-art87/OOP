@@ -125,5 +125,5 @@ for line in formatted_list:
 # Дополнительно: фабрика функций
 print("\nФабрика функций: фильтр по минимальному GPA = 4.0")
 filter_4_0 = make_min_gpa_filter(4.0)
-filtered_by_factory = col3.filter_by(filter_4_0) 
+filtered_by_factory = col3.filter_by(filter_4_0)       
 print_collection("Студенты с GPA >= 4.0 (после буста)", filtered_by_factory)
