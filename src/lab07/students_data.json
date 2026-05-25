@@ -1,0 +1,24 @@
+[
+    {
+        "student_id": 1234567,
+        "name": "Артюх Егор Андреевич ",
+        "age": 18,
+        "gpa": 4.0,
+        "course": 1,
+        "is_active": true,
+        "__type__": "bachelor",
+        "specialization": "ИВТ",
+        "has_practice": false
+    },
+    {
+        "student_id": 7654321,
+        "name": "Петя",
+        "age": 25,
+        "gpa": 5.0,
+        "course": 3,
+        "is_active": true,
+        "__type__": "master",
+        "supervisor": "арвлрвыл",
+        "thesis_topic": "Не определена"
+    }
+]
