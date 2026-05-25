@@ -1,0 +1,46 @@
+[
+    {
+        "student_id": 3124567,
+        "name": "Александр",
+        "age": 22,
+        "gpa": 2.8,
+        "course": 1,
+        "is_active": true,
+        "__type__": "master",
+        "supervisor": "апоурвл",
+        "thesis_topic": "Не определена"
+    },
+    {
+        "student_id": 1234567,
+        "name": "Егор",
+        "age": 18,
+        "gpa": 4.0,
+        "course": 1,
+        "is_active": true,
+        "__type__": "bachelor",
+        "specialization": "ИВТ",
+        "has_practice": false
+    },
+    {
+        "student_id": 7654321,
+        "name": "Сергей",
+        "age": 24,
+        "gpa": 4.0,
+        "course": 2,
+        "is_active": true,
+        "__type__": "master",
+        "supervisor": "плво",
+        "thesis_topic": "Не определена"
+    },
+    {
+        "student_id": 2134567,
+        "name": "Петр",
+        "age": 20,
+        "gpa": 2.0,
+        "course": 3,
+        "is_active": true,
+        "__type__": "bachelor",
+        "specialization": "ИСТ",
+        "has_practice": false
+    }
+]

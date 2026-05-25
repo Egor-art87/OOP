@@ -1,4 +1,3 @@
-# src/lab07/storage.py
 import json
 import os
 from typing import Dict, Any

@@ -11,14 +11,36 @@
         "has_practice": false
     },
     {
+        "student_id": 2134567,
+        "name": "Иванов Иван Иванович",
+        "age": 19,
+        "gpa": 2.0,
+        "course": 2,
+        "is_active": true,
+        "__type__": "bachelor",
+        "specialization": "ИБО",
+        "has_practice": false
+    },
+    {
         "student_id": 7654321,
-        "name": "Петя",
-        "age": 25,
-        "gpa": 5.0,
+        "name": "Петров Иван Николаевич",
+        "age": 19,
+        "gpa": 4.5,
+        "course": 2,
+        "is_active": true,
+        "__type__": "bachelor",
+        "specialization": "ИСТ",
+        "has_practice": false
+    },
+    {
+        "student_id": 3214567,
+        "name": "Петров Петр Петровович",
+        "age": 21,
+        "gpa": 3.45,
         "course": 3,
         "is_active": true,
         "__type__": "master",
-        "supervisor": "арвлрвыл",
+        "supervisor": "Профессор",
         "thesis_topic": "Не определена"
     }
 ]

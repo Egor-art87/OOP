@@ -84,8 +84,8 @@ class TypedCollection(Generic[T]):
 
     def get_by_course(self, course: int) -> 'TypedCollection[T]':
         """
-        Возвращает новую коллекцию элементов заданного курса.
-        Предполагается наличие атрибута course.
+            Возвращает новую коллекцию элементов заданного курса.
+            Предполагается наличие атрибута course.
         """
         new_col: TypedCollection[T] = TypedCollection()
         for item in self._items:
@@ -110,3 +110,4 @@ class TypedCollection(Generic[T]):
 
     def __repr__(self) -> str:
         return f"TypedCollection({self._items!r})"
+    

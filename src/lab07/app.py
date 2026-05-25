@@ -1,4 +1,3 @@
-# src/lab07/app.py
 from typing import List, Callable, Any
 from src.lib.collection import StudentCollection
 from src.lab03.models import BakalavrStudent, MagaStudent
@@ -6,7 +5,6 @@ from src.lab07.exceptions import StudentNotFoundError, DuplicateStudentError
 from src.lab07 import storage
 
 class StudentApp:
-    """Класс бизнес-логики приложения."""
     
     def __init__(self, filepath: str = "students_data.json"):
         self.filepath = filepath

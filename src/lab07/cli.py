@@ -1,4 +1,3 @@
-# src/lab07/cli.py
 from typing import List
 from src.lab07.app import StudentApp
 from src.lab03.models import BakalavrStudent, MagaStudent
@@ -35,13 +34,13 @@ class CLI:
                     self.app.save_data()
                     break
                 else:
-                    print("❌ Ошибка: неверный пункт меню.")
+                    print("Ошибка: неверный пункт меню.")
             except StudentAppError as e:
-                print(f"❌ Ошибка приложения: {e}")
+                print(f"Ошибка приложения: {e}")
             except ValueError as e:
-                print(f"❌ Ошибка ввода: {e}")
+                print(f"Ошибка ввода: {e}")
             except Exception as e:
-                print(f"❌ Непредвиденная ошибка: {e}")
+                print(f"Непредвиденная ошибка: {e}")
             print("-" * 40)
 
     def _print_menu(self) -> None:
@@ -85,26 +84,26 @@ class CLI:
             sup = input("Научный руководитель: ")
             student = MagaStudent(s_id, name, age, gpa, course, sup)
         else:
-            print("❌ Неверный тип.")
+            print("Неверный тип.")
             return
             
         self.app.add_student(student)
-        print("✅ Студент успешно добавлен.")
+        print("Студент успешно добавлен.")
 
     def _find_student(self) -> None:
         s_id = int(input("Введите ID для поиска: "))
         student = self.app.find_student(s_id)
-        print("\n✅ Найден студент:")
+        print("\nНайден студент:")
         student.display_info()
 
     def _remove_student(self) -> None:
         s_id = int(input("Введите ID студента для удаления: "))
         student = self.app.find_student(s_id)
         
-        confirm = input(f"⚠️ Вы уверены, что хотите удалить студента {student.name}? (y/n): ").strip().lower()
+        confirm = input(f"Вы уверены, что хотите удалить студента {student.name}? (y/n): ").strip().lower()
         if confirm == 'y':
             self.app.remove_student(s_id)
-            print("✅ Студент удален.")
+            print("Студент удален.")
         else:
             print("Отмена операции.")
 
@@ -128,8 +127,8 @@ class CLI:
         elif choice == '3':
             self.app.sort_students(strategies.by_course_and_name)
         else:
-            print("❌ Неверный выбор.")
+            print("Неверный выбор.")
             return
             
-        print("✅ Коллекция отсортирована.")
+        print("Коллекция отсортирована.")
         self._show_all()
