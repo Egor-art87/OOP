@@ -46,3 +46,13 @@ class StudentApp:
     def sort_students(self, key_func: Callable[[Any], Any], reverse: bool = False) -> None:
         """Сортирует коллекцию на месте."""
         self.collection.sort(key=key_func, reverse=reverse)
+#
+    def register_student(self, s_type: str, s_id: int, name: str, age: int,
+                        gpa: float, course: int, extra: str) -> None:
+        if s_type == '1':
+            student = BakalavrStudent(s_id, name, age, gpa, course, extra)
+        elif s_type == '2':
+            student = MagaStudent(s_id, name, age, gpa, course, extra)
+        else:
+            raise StudentNotFoundError("Неверный тип студента (допустимо 1 или 2)")
+        self.add_student(student)

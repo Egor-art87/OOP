@@ -68,7 +68,7 @@ class CLI:
         print("\n--- Все студенты ---")
         self._print_table(self.app.get_all_students())
 
-    def _add_student(self) -> None:
+    '''def _add_student(self) -> None:
         print("\n--- Добавление студента ---")
         s_type = input("Тип (1 - Бакалавр, 2 - Магистр): ").strip()
         s_id = int(input("ID (7 цифр): "))
@@ -88,6 +88,28 @@ class CLI:
             return
             
         self.app.add_student(student)
+        print("Студент успешно добавлен.")'''
+    
+    def _add_student(self) -> None:
+        print("\n--- Добавление студента ---")
+        s_type = input("Тип (1 - Бакалавр, 2 - Магистр): ").strip()
+        s_id = int(input("ID (7 цифр): "))
+        name = input("Имя: ")
+        age = int(input("Возраст: "))
+        gpa = float(input("GPA (0-5): "))
+        course = int(input("Курс: "))
+
+        # Дополнительное поле зависит от типа – тоже собираем как UI
+        if s_type == '1':
+            extra = input("Специализация: ")
+        elif s_type == '2':
+            extra = input("Научный руководитель: ")
+        else:
+            print("Неверный тип.")
+            return
+
+        # Бизнес-операция – полностью делегируется приложению
+        self.app.register_student(s_type, s_id, name, age, gpa, course, extra)
         print("Студент успешно добавлен.")
 
     def _find_student(self) -> None:
