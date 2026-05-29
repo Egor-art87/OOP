@@ -41,7 +41,7 @@ class CLI:
                 print(f"Ошибка ввода: {e}")
             except Exception as e:
                 print(f"Непредвиденная ошибка: {e}")
-            print("-" * 40)
+            print("-" * 70)
 
     def _print_menu(self) -> None:
         print("\n=== ГЛАВНОЕ МЕНЮ ===")
@@ -59,7 +59,7 @@ class CLI:
             print("Список пуст.")
             return
         print(f"{'ID':<10} | {'Имя':<15} | {'Курс':<5} | {'GPA':<5} | {'Тип'}")
-        print("-" * 50)
+        print("-" * 70)
         for s in students:
             s_type = "Бакалавр" if isinstance(s, BakalavrStudent) else "Магистр"
             print(f"{s.student_id:<10} | {s.name:<15} | {s.course:<5} | {s.gpa:<5.2f} | {s_type}")
@@ -68,27 +68,6 @@ class CLI:
         print("\n--- Все студенты ---")
         self._print_table(self.app.get_all_students())
 
-    '''def _add_student(self) -> None:
-        print("\n--- Добавление студента ---")
-        s_type = input("Тип (1 - Бакалавр, 2 - Магистр): ").strip()
-        s_id = int(input("ID (7 цифр): "))
-        name = input("Имя: ")
-        age = int(input("Возраст: "))
-        gpa = float(input("GPA (0-5): "))
-        course = int(input("Курс: "))
-
-        if s_type == '1':
-            spec = input("Специализация: ")
-            student = BakalavrStudent(s_id, name, age, gpa, course, spec)
-        elif s_type == '2':
-            sup = input("Научный руководитель: ")
-            student = MagaStudent(s_id, name, age, gpa, course, sup)
-        else:
-            print("Неверный тип.")
-            return
-            
-        self.app.add_student(student)
-        print("Студент успешно добавлен.")'''
     
     def _add_student(self) -> None:
         print("\n--- Добавление студента ---")
